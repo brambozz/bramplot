@@ -2,15 +2,28 @@
 
 Tired of fiddling with `matplotlib` and `pyplot` to get good looking figures for your publications/presentation?
 Tired of boiler plate code to export your plots to different formats?
-Did people complain again about axis labels that are hard to read?
+Did people complain *again* about axis labels that are hard to read?
 No more!
 
 `bramplot` extends `pyplot` with a few handy functions and sets sensible defaults to make sure your figures look good in academic publications and presentations.
 
+**TODO: put a cool AND good looking example here**
+
 ## Basic principle
 
-The main idea of this package is to make sure that you make figures with the right *width/height* and *font size*.
+The main idea of this package is to make sure that your figures have the right *width/height* and *font size*.
 The width should be exactly the linewidth wherever you place your figure, while the font size typically looks best when it is equal to the caption size.
+
+## Contents
+
+1. [Installation](#installation)
+1. [TL;DR recipe](#recipe-tldr--i-dont-have-time)
+1. [Optimal recipe](#recipe-optimally-sized-figures)
+1. [Level 1: Replace pyplot import](#level-1-replace-pyplot-import)
+1. [Level 2: Use optimal figure width and font size](#level-2-use-optimal-figure-width-and-font-size)
+1. [Find figure width and font size in your document](#finding-out-figure-width-and-font-size)
+1. [Development](#development)
+1. [Inspiration](#inspiration)
 
 ## Goals
 
@@ -97,7 +110,7 @@ fig.savefig(filepath.format)
 
 ![](images/matplotlib.png)
 
-## Level 2: Use optimal figure width and text size
+## Level 2: Use optimal figure width and font size
 
 Ideally, the figures you export have exactly the width they will have in your document.
 This way, they don't have to be resized and font sizes stay exactly how you set them in python.
