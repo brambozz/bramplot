@@ -1,40 +1,52 @@
 # Bramplot
 
+Tired of fiddling with `matplotlib` and `pyplot` to get good looking figures for your publications/presentation?
+Tired of boiler plate code to export your plots to different formats?
+Did people complain again about axis labels that are hard to read?
+No more!
+
+`bramplot` extends `pyplot` with a few handy functions and sets sensible defaults to make sure your figures look good in academic publications and presentations.
+
+## Basic principle
+
+The main idea of this package is to make sure that you make figures with the right *width/height* and *font size*.
+The width should be exactly the linewidth wherever you place your figure, while the font size typically looks best when it is equal to the caption size.
+
 ## Goals
 
-- [x] Just using `plt` as usual should give satisfying plots
-- [x] Command line functionality which takes in `.tex` or `.pdf` and figures out appropriate sizes
-- [x] Good default styles based on scienceplots and catppuccin
-- [ ] Overwrite `plt` import and introduce extra save format `.fig`
+- [ ] Introduce extra save format `.fig`
+- [ ] Batch export formats
 
-## TL;DR / I don't have time
+## Installation
 
-```
-pip install bramplot
+```sh
+pip install git+https://github.com/brambozz/bramplot
 ```
 
-And replace
+## Recipe: TL;DR / I don't have time
+
+Replace
 
 ```py
 import matplotlib.pyplot as plt
 ```
 
-With
+By
 
 ```py
 import bramplot as plt
 ```
 
-## I want optimally sized figures
+## Recipe: Optimally sized figures
 
-1. Figure out optimal figure `width`, `font` size, and optionally `height`.
-2. Make your plot.
+1. Figure out optimal figure `width` (and optionally `height`) in inch and `font` size in pt.
+2. Make your figure.
 
 ```py
 import bramplot as plt
 
 fig = plt.figure()
-etc.
+...
 ```
 
 3. Set the sizes you found.
@@ -43,7 +55,7 @@ etc.
 plt.set_sizes(width=..., height=..., font=...)
 ```
 
-4. Export
+4. Export to desired formats.
 
 ```py
 fig.savefig(/path/to/image, formats=["png", "pdf", "svg"])
@@ -127,7 +139,7 @@ plt.set_size(width=3, height=1.5, font=8)
 
 ![](images/bramplot_width_3_half_aspect_font_8.png)
 
-### Finding out figure width and font size
+## Finding out figure width and font size
 
 `bramplot` includes a script to determine the figure width and caption font size for a latex project.
 
@@ -174,3 +186,7 @@ conda activate bramplot
 pip install --no-build-isolation -e .
 ```
 
+## Inspiration
+
+- [Jack Walton](https://jwalton.info/Embed-Publication-Matplotlib-Latex/)
+- [SciencePlots](https://github.com/garrettj403/SciencePlots)
