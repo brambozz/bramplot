@@ -11,5 +11,5 @@ fig.savefig(save_dir / "fig_format_before", format=["png","fig"])
 
 fig = plt.load(save_dir / "fig_format_before.fig")
 plt.title("New title and size")
-plt.set_size(width=2, aspect="square")
+plt.set_size(width=2.5, aspect="square")
 fig.savefig(save_dir / "fig_format_after.png")
