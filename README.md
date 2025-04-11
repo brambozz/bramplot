@@ -1,7 +1,7 @@
 # Bramplot
 
 Tired of fiddling with `matplotlib` and `pyplot` to get good looking figures for your publications/presentation?
-Tired of boiler plate code to export your plots to different formats?
+Tired of writing boiler plate code to export your plots to different formats?
 Did people complain *again* about axis labels that are hard to read?
 No more!
 
@@ -52,7 +52,7 @@ import bramplot as plt
 
 ## Recipe: Optimally sized figures
 
-1. Figure out optimal figure `width` (and optionally `height`) in inch and `font` size in pt.
+1. Figure out optimal figure `width` (and optionally `height`) in inch and `font` size in pt. (see [here](#finding-out-figure-width-and-font-size))
 2. Make your figure.
 
 ```py
@@ -76,7 +76,7 @@ fig.savefig(/path/to/image, formats=["png", "pdf", "svg"])
 
 ## Level 1: Replace pyplot import
 
-If you just want a figure which looks decent out of the box, without worrying about sizes, simly replace your typical `import matplotlib.pyplot as plt` import with `import bramplot as plt`.
+If you just want a figure which looks decent out of the box, without worrying about sizes, simply replace your `import matplotlib.pyplot as plt` import with `import bramplot as plt`.
 You can use all functions in `plt`, but the output has better defaults for colors and readability.
 
 ```py
@@ -90,7 +90,6 @@ def plot():
     fig = plt.figure()
     plt.plot(x, y, label="$y=x^2$")
     plt.plot(x, 1-y, label="$y=1-x^2$")
-    plt.plot(x, sinusoid, label=r"$y=\sin (2\pi x)$")
     plt.xlabel(r"Time ($\mu$s)")
     plt.ylabel("Voltage (V)")
     plt.title("Test plot")
@@ -115,9 +114,10 @@ fig.savefig(filepath.format)
 Ideally, the figures you export have exactly the width they will have in your document.
 This way, they don't have to be resized and font sizes stay exactly how you set them in python.
 Additionally, having titles and labels the same font size as the caption text looks best.
-The default setting in `bramplot` is a width of 3.176 inches, which is the image width in astandard Latex double column article class document.
+The default setting in `bramplot` is a width of 3.176 inches, which is the image width in a standard Latex double column article class document.
 The height is according to the golden ratio.
-If you know your desired figure width in inches and text size in pt, specify those with the function `set_sizes()`.
+If you know your desired figure width in inches and text size in pt, specify those with the function `set_size()`.
+Here are some examples of usage of the `plt.set_size()` function:
 
 **Specify only width for golden ratio**
 
@@ -155,6 +155,7 @@ plt.set_size(width=3, height=1.5, font=8)
 ## Finding out figure width and font size
 
 `bramplot` includes a script to determine the figure width and caption font size for a latex project.
+Use it as follows:
 
 1. Insert the default example image into your latex document, using *exactly* the following bit of latex:
 
@@ -172,6 +173,8 @@ plt.set_size(width=3, height=1.5, font=8)
 python -m bramplot.find_sizes /path/to/file.pdf
 ```
 
+The script will print the figure width and caption size, which you can then set with `plt.set_size()`.
+
 If you don't use latex, you can still insert `example-image-a.png` in your document.
 It is included in this repository in the `images` directory.
 Insert with the same caption text as above: 'This text is to detect the caption.'.
@@ -180,9 +183,9 @@ Then export to pdf and run the script.
 ### Figure sizes for posters / presentations
 
 In articles, you typically use some template with predefined widths and text sizes.
-For presentation or posters, these might be different through your document.
+For presentation or posters, these might be different throughout your document.
 You can usually find a good figure size by placing a dummy rectangle and resizing that to your desired size.
-Then find the size of that rectangle in inches.
+Then find the size of that rectangle in inches and set that with `plt.set_size()`.
 
 ## Development
 
