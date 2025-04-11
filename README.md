@@ -206,7 +206,7 @@ This will export `/path/to/figure.png`, `/path/to/figure.pdf` and `/path/to/figu
 ## New .fig format
 
 `bramplot` extends the `savefig` function with an extra format: `.fig`.
-This is reminiscent of the MATLAB functionality, and pickles the Figure object such that you can load it later and update your plot in, for instance, a separate script.
+This pickles the Figure object such that you can load it later and update your plot in, for instance, a separate script.
 
 ```py
 # Save a figure
