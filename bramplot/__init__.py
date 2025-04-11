@@ -4,35 +4,36 @@ from matplotlib.pyplot import *
 import scienceplots
 
 mpl.style.use("latte")
-# mpl.style.use(["science", catppuccin.PALETTE.latte.identifier])
-# # mpl.style.use(["science"])
 
 settings = {
-    "figure.figsize" : "3.5,2.625",
+    "figure.figsize" : "3.176,1.963",
+    "figure.constrained_layout.use" : True,
 
-    # Use LaTeX to write all text
     "text.usetex": True,
+    "text.latex.preamble": r'\usepackage{amsmath} \usepackage{amssymb}',
     "font.family": "serif",
-    # Use 10pt font in plots, to match 10pt font in document
-    "axes.labelsize": 9,
-    "axes.titlesize": 9,
-    "font.size": 9,
+    "axes.labelsize": 10,
+    "axes.titlesize": 10,
+    "font.size": 10,
+    "legend.fontsize": 8,
 
-    # Make the legend/label fonts a little smaller
-    # "legend.fontsize": 8,
-    "xtick.labelsize": 8,
-    "ytick.labelsize": 8,
-
+    "lines.linewidth" : 1.5,
     "axes.linewidth" : 1,
-    "grid.linewidth" : 1,
-    "lines.linewidth" : 1,
+    "grid.linewidth" : 0.5,
 
     # Remove legend frame
     "legend.frameon" : False,
 
-    # Always save as 'tight'
-    "savefig.bbox" : "tight",
-    "savefig.pad_inches" : 0.0,
+    # Overwrite the catppuccin colors for text
+    # Line and other plot element colors stay the same.
+    "text.color": "000000",
+    "axes.labelcolor": "000000",
+    "xtick.labelcolor": "000000",
+    "ytick.labelcolor": "000000",
+
+    # Facecolors are white + transparent
+    "axes.facecolor": "ffffff00",
+    "figure.facecolor": "ffffff00",
+    "savefig.facecolor": "ffffff00",
 }
 rcParams.update(settings)
-

@@ -1,15 +1,32 @@
-"""Some basic plots"""
+"""Example plot to test the library. Also exports default matplotlib
+plot for comparison in the readme."""
+
+import matplotlib.pyplot as plt
+import numpy as np
+from pathlib import Path
+
+def plot():
+    x = np.linspace(0, 1, 50)
+    y = x**2
+    sinusoid = np.sin(2*np.pi*x)
+
+    fig = plt.figure()
+    plt.plot(x, y, label="$y=x^2$")
+    plt.plot(x, 1-y, label="$y=1-x^2$")
+    plt.plot(x, sinusoid, label=r"$y=\sin (2\pi x)$")
+    plt.xlabel(r"Time ($\mu$s)")
+    plt.ylabel("Voltage (V)")
+    plt.title("Test plot")
+    plt.legend()
+
+    return fig
+
+save_dir = Path(__file__).parent.parent / "images"
+
+fig = plot()
+fig.savefig(save_dir / "matplotlib.pdf")
 
 import bramplot as plt
-import numpy as np
 
-x = np.linspace(0, 1, 50)
-y = x**2
-
-plt.plot(x, y, label="$y=x^2$")
-plt.plot(1-x, y, label="$y=1-x^2$")
-plt.title("Test plot")
-plt.legend()
-
-plt.savefig("/tmp/bramplot_test_plot.pdf", facecolor="#00000000")
-
+fig = plot()
+fig.savefig(save_dir / "bramplot.pdf")
