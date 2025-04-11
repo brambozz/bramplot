@@ -23,6 +23,7 @@ The width should be exactly the linewidth wherever you place your figure, while 
 1. [Level 2: Use optimal figure width and font size](#level-2-use-optimal-figure-width-and-font-size)
 1. [Find figure width and font size in your document](#finding-out-figure-width-and-font-size)
 1. [Batch export figure formats](#batch-export-figure-formats)
+1. [New .fig format](#new-fig-format)
 1. [Development](#development)
 1. [Inspiration](#inspiration)
 
@@ -54,7 +55,7 @@ import bramplot as plt
 ## Recipe: Optimally sized figures
 
 1. Figure out optimal figure `width` (and optionally `height`) in inch and `font` size in pt. (see [here](#finding-out-figure-width-and-font-size))
-2. Make your figure.
+1. Make your figure.
 
 ```py
 import bramplot as plt
@@ -63,17 +64,19 @@ fig = plt.figure()
 ...
 ```
 
-3. Set the sizes you found.
+1. Set the sizes you found.
 
 ```py
 plt.set_sizes(width=..., height=..., font=...)
 ```
 
-4. Export to desired formats.
+1. Export to desired formats.
 
 ```py
 fig.savefig(/path/to/image, formats=["png", "pdf", "svg"])
 ```
+
+1. Include your figures in your document *without resizing them*.
 
 ## Level 1: Replace pyplot import
 
@@ -197,6 +200,32 @@ This becomes a one-liner:
 ```py
 fig.savefig("/path/to/figure", format=["png", "pdf", "svg"])
 ```
+
+This will export `/path/to/figure.png`, `/path/to/figure.pdf` and `/path/to/figure.svg`.
+
+## New .fig format
+
+`bramplot` extends the `savefig` function with an extra format: `.fig`.
+This is reminiscent of the MATLAB functionality, and pickles the Figure object such that you can load it later and update your plot in, for instance, a separate script.
+
+```py
+# Save a figure
+fig.savefig(save_dir / "fig_format_before", format=["png","fig"])
+
+# Load it and edit
+fig = plt.load(save_dir / "fig_format_before.fig")
+plt.title("New title and size")
+plt.set_size(width=2, aspect="square")
+fig.savefig(save_dir / "fig_format_after.png")
+```
+
+**Original plot**
+
+![](images/fig_format_before.png)
+
+**After loading .fig and edit**
+
+![](images/fig_format_after.png)
 
 ## Development
 

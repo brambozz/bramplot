@@ -5,4 +5,4 @@ import bramplot as plt
 
 fig = plot()
 
-plt.savefig("/tmp/batch_export", format=["png", "pdf", "svg", "eps"])
+plt.savefig("/tmp/batch_export", format=["fig", "png", "pdf", "svg", "eps"])

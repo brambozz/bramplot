@@ -5,6 +5,7 @@ from matplotlib.figure import Figure as _Figure
 from matplotlib.pyplot import *
 import scienceplots
 from pathlib import Path
+import pickle
 
 mpl.style.use("latte")
 
@@ -79,20 +80,34 @@ def set_size(width=DEFAULT_WIDTH, height=None, aspect="golden", font=None):
 
     rcParams.update(settings)
 
-# Store original savefig method
+# Courtesy of uncle Chat, add .fig format and support for batch exporting
+
+# Store the real original method
 _original_savefig = _Figure.savefig
 
 def _custom_savefig(self, fname, *args, format=None, **kwargs):
     fname = Path(fname)
+
+    def save_single(outname, fmt):
+        if fmt == ".fig":
+            with open(outname, "wb") as f:
+                pickle.dump(self, f)
+        else:
+            _original_savefig(self, outname, *args, format=fmt.lstrip("."), **kwargs)
+
     if isinstance(format, list):
         for fmt in format:
-            if fmt[0] != ".":
-                fmt = "." + fmt
-
+            fmt = f".{fmt}" if not fmt.startswith(".") else fmt
             outname = fname.with_suffix(fmt)
-            _original_savefig(self, outname, *args, **kwargs)
+            save_single(outname, fmt)
     else:
-        _original_savefig(self, fname, *args, format=format, **kwargs)
+        fmt = f".{format}" if format and not str(format).startswith(".") else str(format or fname.suffix)
+        outname = fname.with_suffix(fmt)
+        save_single(outname, fmt)
 
-# Monkey-patch the savefig method on the Figure class
+# Monkey-patch only once
 _Figure.savefig = _custom_savefig
+
+def load(file_path):
+    with open(file_path, "rb") as f:
+        return pickle.load(f)
