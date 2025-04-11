@@ -5,7 +5,7 @@ Tired of writing boiler plate code to export your plots to different formats?
 Did people complain *again* about axis labels that are hard to read?
 No more!
 
-`bramplot` extends `pyplot` with a few handy functions and sets sensible defaults to make sure your figures look good in academic publications and presentations.
+`bramplot` extends `pyplot` with a few handy functions and sensible defaults to make sure your figures look good in academic publications and presentations.
 
 **TODO: put a cool AND good looking example here**
 
@@ -22,6 +22,7 @@ The width should be exactly the linewidth wherever you place your figure, while 
 1. [Level 1: Replace pyplot import](#level-1-replace-pyplot-import)
 1. [Level 2: Use optimal figure width and font size](#level-2-use-optimal-figure-width-and-font-size)
 1. [Find figure width and font size in your document](#finding-out-figure-width-and-font-size)
+1. [Batch export figure formats](#batch-export-figure-formats)
 1. [Development](#development)
 1. [Inspiration](#inspiration)
 
@@ -186,6 +187,16 @@ In articles, you typically use some template with predefined widths and text siz
 For presentation or posters, these might be different throughout your document.
 You can usually find a good figure size by placing a dummy rectangle and resizing that to your desired size.
 Then find the size of that rectangle in inches and set that with `plt.set_size()`.
+
+## Batch export figure formats
+
+`bramplot` extends the `savefig` function with the option to batch export formats.
+It is often handy to have all your figures in `.png`, `.pdf` and `.svg`.
+This becomes a one-liner:
+
+```py
+fig.savefig("/path/to/figure", format=["png", "pdf", "svg"])
+```
 
 ## Development
 

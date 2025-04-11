@@ -1,13 +1,17 @@
 import catppuccin
 import matplotlib as mpl
+import matplotlib.pyplot as _plt
+from matplotlib.figure import Figure as _Figure
 from matplotlib.pyplot import *
 import scienceplots
+from pathlib import Path
 
 mpl.style.use("latte")
 
 DEFAULT_WIDTH = 3.176
 DEFAULT_HEIGHT = DEFAULT_WIDTH/1.618
 
+# These are inspired by SciencePlots
 settings = {
     "figure.figsize" : f"{DEFAULT_WIDTH},{DEFAULT_HEIGHT}",
     "figure.dpi" : 600,
@@ -74,3 +78,21 @@ def set_size(width=DEFAULT_WIDTH, height=None, aspect="golden", font=None):
 
 
     rcParams.update(settings)
+
+# Store original savefig method
+_original_savefig = _Figure.savefig
+
+def _custom_savefig(self, fname, *args, format=None, **kwargs):
+    fname = Path(fname)
+    if isinstance(format, list):
+        for fmt in format:
+            if fmt[0] != ".":
+                fmt = "." + fmt
+
+            outname = fname.with_suffix(fmt)
+            _original_savefig(self, outname, *args, **kwargs)
+    else:
+        _original_savefig(self, fname, *args, format=format, **kwargs)
+
+# Monkey-patch the savefig method on the Figure class
+_Figure.savefig = _custom_savefig
