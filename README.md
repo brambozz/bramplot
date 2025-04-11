@@ -32,11 +32,11 @@ plt.legend()
 
 **Standard matplotlib**
 
-![](images/matplotlib.pdf)
+![](images/matplotlib.png)
 
 **bramplot**
 
-![](images/bramplot.pdf)
+![](images/bramplot.png)
 
 ## Finding optimal figure width and text size
 

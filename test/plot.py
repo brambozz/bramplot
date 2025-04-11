@@ -24,9 +24,9 @@ def plot():
 save_dir = Path(__file__).parent.parent / "images"
 
 fig = plot()
-fig.savefig(save_dir / "matplotlib.pdf")
+fig.savefig(save_dir / "matplotlib.png")
 
 import bramplot as plt
 
 fig = plot()
-fig.savefig(save_dir / "bramplot.pdf")
+fig.savefig(save_dir / "bramplot.png")
