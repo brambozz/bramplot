@@ -7,6 +7,7 @@ mpl.style.use("latte")
 
 settings = {
     "figure.figsize" : "3.176,1.963",
+    "figure.dpi" : 600,
     "figure.constrained_layout.use" : True,
 
     "text.usetex": True,
