@@ -7,7 +7,7 @@
 - [x] Good default styles based on scienceplots and catppuccin
 - [ ] Overwrite `plt` import and introduce extra save format `.fig`
 
-## TL;DR
+## TL;DR / I don't have time
 
 ```
 pip install bramplot
@@ -23,6 +23,30 @@ With
 
 ```py
 import bramplot as plt
+```
+
+## I want optimally sized figures
+
+1. Figure out optimal figure `width`, `font` size, and optionally `height`.
+2. Make your plot.
+
+```py
+import bramplot as plt
+
+fig = plt.figure()
+etc.
+```
+
+3. Set the sizes you found.
+
+```py
+plt.set_sizes(width=..., height=..., font=...)
+```
+
+4. Export
+
+```py
+fig.savefig(/path/to/image, formats=["png", "pdf", "svg"])
 ```
 
 ## Level 1: Replace pyplot import
