@@ -31,9 +31,9 @@ settings = {
     "xtick.labelcolor": "000000",
     "ytick.labelcolor": "000000",
 
-    # Facecolors are white + transparent
-    "axes.facecolor": "ffffff00",
-    "figure.facecolor": "ffffff00",
-    "savefig.facecolor": "ffffff00",
+    # Facecolors are white
+    "axes.facecolor": "ffffff",
+    "figure.facecolor": "ffffff",
+    "savefig.facecolor": "ffffff",
 }
 rcParams.update(settings)
