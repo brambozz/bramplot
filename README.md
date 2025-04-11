@@ -95,6 +95,14 @@ plt.set_size(width=3, height=1.5)
 
 ![](images/bramplot_width_3_half_aspect.png)
 
+**Edit font size**
+
+```
+plt.set_size(width=3, height=1.5, font=8)
+```
+
+![](images/bramplot_width_3_half_aspect_font_8.png)
+
 ### Finding out figure width and font size
 
 `bramplot` includes a script to determine the figure width and caption font size for a latex project.

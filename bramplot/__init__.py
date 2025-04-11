@@ -64,4 +64,13 @@ def set_size(width=DEFAULT_WIDTH, height=None, aspect="golden", font=None):
         settings["axes.titlesize"] = font
         settings["font.size"] = font
 
+        # Update current figure font sizes
+        for ax in fig.axes:
+            ax.title.set_fontsize(font)
+            ax.xaxis.label.set_fontsize(font)
+            ax.yaxis.label.set_fontsize(font)
+            for label in ax.get_xticklabels() + ax.get_yticklabels():
+                label.set_fontsize(font)
+
+
     rcParams.update(settings)
