@@ -7,7 +7,7 @@ No more!
 
 `bramplot` extends `pyplot` with a few handy functions and sensible defaults to make sure your figures look good in academic publications and presentations.
 
-![<img src="images/island_profile.png">](test/readme_figure.py)
+[![Example image](images/island_profile.png)](test/readme_figure.py)
 
 *Click the image to view the source code*
 
