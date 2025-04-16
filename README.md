@@ -7,7 +7,9 @@ No more!
 
 `bramplot` extends `pyplot` with a few handy functions and sensible defaults to make sure your figures look good in academic publications and presentations.
 
-**TODO: put a cool AND good looking example here**
+![<img src="images/island_profile.png">](test/readme_figure.py)
+
+*Click the image to view the source code*
 
 ## Basic principle
 
@@ -26,11 +28,6 @@ The width should be exactly the linewidth wherever you place your figure, while 
 1. [New .fig format](#new-fig-format)
 1. [Development](#development)
 1. [Inspiration](#inspiration)
-
-## Goals
-
-- [ ] Introduce extra save format `.fig`
-- [ ] Batch export formats
 
 ## Installation
 
@@ -64,7 +61,7 @@ fig = plt.figure()
 ...
 ```
 
-1. Set the sizes you found.
+1. Set the sizes you found. Or use a [preset](#presets).
 
 ```py
 plt.set_sizes(width=..., height=..., font=...)
@@ -191,6 +188,21 @@ For presentation or posters, these might be different throughout your document.
 You can usually find a good figure size by placing a dummy rectangle and resizing that to your desired size.
 Then find the size of that rectangle in inches and set that with `plt.set_size()`.
 
+## Presets
+
+`bramplot` includes preset `width`/`height`/`font` for common use cases.
+Currently avaiable are:
+
+- `latex_article`: For `\documentclass{article}`
+- `latex_article_single_column`: For a single-column figure in `\documentclass[twocolumn]{article}`
+- `latex_article_double_column`: For a two-column figure in `\documentclass[twocolumn]{article}`
+
+Use them directly with the `plt.set_size()` function, e.g.:
+
+```py
+plt.set_size("latex_article")
+```
+
 ## Batch export figure formats
 
 `bramplot` extends the `savefig` function with the option to batch export formats.
@@ -215,7 +227,7 @@ fig.savefig(save_dir / "fig_format_before", format=["png","fig"])
 # Load it and edit
 fig = plt.load(save_dir / "fig_format_before.fig")
 plt.title("New title and size")
-plt.set_size(width=2, aspect="square")
+plt.set_size(width=2.5, aspect="square")
 fig.savefig(save_dir / "fig_format_after.png")
 ```
 

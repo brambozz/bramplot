@@ -6,6 +6,7 @@ from matplotlib.pyplot import *
 import scienceplots
 from pathlib import Path
 import pickle
+from bramplot.presets import PRESETS
 
 mpl.style.use("latte")
 
@@ -48,9 +49,12 @@ settings = {
 rcParams.update(settings)
 
 
-def set_size(width=DEFAULT_WIDTH, height=None, aspect="golden", font=None):
+def set_size(width=DEFAULT_WIDTH, height=None, aspect="golden", font=None, preset=None):
     fig = gcf()
     settings = {}
+
+    if preset is not None:
+        width, height, font = PRESETS[preset]
 
     # If height is not specified, use golden ratio
     if height is None:
