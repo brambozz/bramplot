@@ -1,4 +1,4 @@
-# Bramplot
+# :chart_with_upwards_trend: bramplot
 
 Tired of fiddling with `matplotlib` and `pyplot` to get good looking figures for your publications/presentation?
 Tired of writing boiler plate code to export your plots to different formats?
